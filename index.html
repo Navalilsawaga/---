@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>С Днём Рождения, Любимая!</title>
+  <!-- Шрифты Google для элегантности -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* Обнуление и базовые стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #1a0b1f 0%, #2d1b33 50%, #1f1124 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Анимированные искры/звёзды на фоне */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #ffd9b3, #ff9f7c);
+      border-radius: 50%;
+      box-shadow: 0 0 20px #ffb08c;
+      animation: float 8s infinite alternate ease-in-out;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .sparkle:nth-child(1) { top: 10%; left: 15%; animation-duration: 9s; width: 8px; height: 8px; }
+    .sparkle:nth-child(2) { top: 20%; right: 25%; animation-duration: 11s; width: 5px; height: 5px; }
+    .sparkle:nth-child(3) { bottom: 25%; left: 10%; animation-duration: 7s; width: 10px; height: 10px; }
+    .sparkle:nth-child(4) { bottom: 15%; right: 12%; animation-duration: 13s; width: 7px; height: 7px; }
+    .sparkle:nth-child(5) { top: 45%; left: 80%; animation-duration: 10s; width: 9px; height: 9px; }
+    .sparkle:nth-child(6) { top: 65%; left: 30%; animation-duration: 8s; width: 6px; height: 6px; }
+    .sparkle:nth-child(7) { top: 80%; left: 70%; animation-duration: 12s; width: 11px; height: 11px; }
+    .sparkle:nth-child(8) { top: 5%; left: 60%; animation-duration: 9s; width: 5px; height: 5px; }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(0.8); opacity: 0.3; }
+      50% { transform: translate(20px, -30px) scale(1.2); opacity: 0.9; }
+      100% { transform: translate(-10px, 20px) scale(1); opacity: 0.5; }
+    }
+
+    /* Основная карточка-письмо */
+    .card {
+      max-width: 780px;
+      width: 100%;
+      background: rgba(255, 245, 240, 0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 48px 48px 48px 48px;
+      padding: 40px 35px 45px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 215, 190, 0.15);
+      border: 1px solid rgba(255, 220, 200, 0.2);
+      transition: 0.3s;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    /* Декоративный заголовок "С Днём Рождения" */
+    .birthday-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.6rem;
+      color: #ffdcc9;
+      text-shadow: 0 4px 20px rgba(255, 140, 100, 0.5);
+      margin-bottom: 0.15em;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      word-break: break-word;
+    }
+
+    .sub-greeting {
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: #f3d5c0;
+      margin-top: -8px;
+      margin-bottom: 30px;
+      border-top: 1px solid rgba(255, 200, 170, 0.25);
+      border-bottom: 1px solid rgba(255, 200, 170, 0.25);
+      display: inline-block;
+      padding: 8px 18px;
+      backdrop-filter: blur(4px);
+      background: rgba(255, 220, 200, 0.05);
+      border-radius: 60px;
+      font-weight: 300;
+    }
+
+    /* Имя с любовью */
+    .name-block {
+      font-size: 2.8rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #fce3d4, #ffbaa0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 5px 0 18px;
+      letter-spacing: 2px;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 0 0 30px rgba(255, 160, 120, 0.3);
+    }
+
+    /* Основной текст с признаниями */
+    .love-message {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #f5e3d9;
+      background: rgba(20, 8, 22, 0.35);
+      padding: 25px 22px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 210, 180, 0.15);
+      backdrop-filter: blur(4px);
+      margin: 25px 0 20px;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      text-align: left;
+    }
+
+    .love-message p {
+      margin-bottom: 15px;
+    }
+    .love-message p:last-child {
+      margin-bottom: 0;
+    }
+
+    .love-message strong {
+      font-weight: 400;
+      color: #ffccb3;
+      background: linear-gradient(135deg, #ffb08c, #ff9a7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+    }
+
+    /* Строка "Я тебя люблю" — особенно выделена */
+    .i-love-you {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      text-align: center;
+      margin: 25px 0 10px;
+      background: linear-gradient(145deg, #ffe0cc, #ffb69b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(255, 130, 90, 0.4);
+      letter-spacing: 4px;
+      animation: glowPulse 3s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 20px rgba(255, 150, 120, 0.2); transform: scale(1); }
+      100% { text-shadow: 0 0 50px rgba(255, 120, 80, 0.7), 0 0 80px rgba(255, 100, 70, 0.3); transform: scale(1.02); }
+    }
+
+    /* Красивые сердечки-разделители */
+    .heart-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      color: #f5b8a0;
+      font-size: 1.8rem;
+      margin: 15px 0 10px;
+      opacity: 0.8;
+    }
+    .heart-divider span {
+      background: rgba(255, 200, 180, 0.1);
+      padding: 0 10px;
+      border-radius: 40px;
+    }
+
+    /* Подпись / дата */
+    .footer-note {
+      margin-top: 30px;
+      font-size: 1rem;
+      color: #dbb8ab;
+      letter-spacing: 1px;
+      font-weight: 300;
+      border-top: 1px solid rgba(255, 200, 170, 0.15);
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-note .signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #f5ccb8;
+      background: rgba(0,0,0,0.2);
+      padding: 0 18px;
+      border-radius: 60px;
+      line-height: 1.4;
+    }
+    .footer-note .date {
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+
+    /* Мобильная адаптация */
+    @media (max-width: 560px) {
+      .card {
+        padding: 30px 20px 30px;
+        border-radius: 32px;
+      }
+      .birthday-title {
+        font-size: 2.8rem;
+      }
+      .name-block {
+        font-size: 2.4rem;
+      }
+      .love-message {
+        font-size: 1rem;
+        padding: 20px 16px;
+      }
+      .i-love-you {
+        font-size: 2.8rem;
+      }
+      .footer-note {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .birthday-title {
+        font-size: 2.2rem;
+      }
+      .name-block {
+        font-size: 2rem;
+      }
+      .i-love-you {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Фоновые искры -->
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+
+  <div class="card">
+    <!-- Заголовок с днём рождения -->
+    <div class="birthday-title">С Днём Рождения</div>
+    
+    <!-- Имя — здесь можно вставить имя девушки -->
+    <div class="name-block">Моя Зайка</div>
+
+    <!-- Короткое приветствие -->
+    <div class="sub-greeting">✨ Сегодня твой день рождение ✨</div>
+
+    <!-- Основной блок со словами любви -->
+    <div class="love-message">
+      <p>Таисья с днем рождение желаю тебе здоровья и деньги и АШКИ ХАХАХА</p>
+      <p>Ты будешь для меня лучше всех</p>
+      <p>Если тебе грустно говори мне я тебя всегда подержу♥️♥️</p>
+	  <p>Ты первая кто заметила во мне хорошое</p>
+	  <p>Ты лучшая кого я встречал</p>
+	  <p>И скажу честно мне плевать что будут говорить общество я тебя никогда не брошу♥️♥️</p>
+    </div>
+
+    <!-- Сердечный разделитель -->
+    <div class="heart-divider">
+      <span>💗</span>
+      <span>❤️</span>
+      <span>💗</span>
+    </div>
+
+    <!-- САМОЕ ГЛАВНОЕ: "Я тебя люблю" крупно и красиво -->
+    <div class="i-love-you">Я тебя люблю</div>
+
+    <!-- Дополнительная строка с нежным посланием -->
+    <div style="margin: 5px 0 10px; font-size: 1.1rem; color: #ebcfc0; font-style: italic; letter-spacing: 1px;">
+      ❝ с каждым днём всё сильнее ❞
+    </div>
+
+    <!-- Подвал с подписью и датой -->
+    <div class="footer-note">
+      <span class="signature">Твой Любимый</span>
+      <span class="date">✨ 23 июня 2026 ✨</span>
+    </div>
+
+    <!-- Маленькое сердечко в самом низу -->
+    <div style="margin-top: 20px; font-size: 1rem; color: #cfaa9a; opacity: 0.5; letter-spacing: 6px;">
+      ♥ ♥ ♥
+    </div>
+	<p>Я ДОЛБАЕБ</p>
+  </div>
+</body>
+</html>
